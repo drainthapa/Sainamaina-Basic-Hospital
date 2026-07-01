@@ -1,19 +1,37 @@
 import { useLanguage } from '../context/LanguageContext';
 import './LanguageToggle.css';
 
-export default function LanguageToggle() {
-  const { lang, toggleLang } = useLanguage();
+export default function LanguageToggle({ variant = 'default' }) {
+  const { lang, setLang } = useLanguage();
+  const isEn = lang === 'en';
 
   return (
-    <button
-      type="button"
-      className="admin-lang-toggle"
-      onClick={toggleLang}
-      title={lang === 'en' ? 'नेपालीमा बदलनुहोस्' : 'Switch to English'}
+    <div
+      className={`lang-sw lang-sw--${variant}`}
+      role="group"
+      aria-label="Language"
     >
-      <span className={lang === 'en' ? 'active' : ''}>EN</span>
-      <span className="divider">/</span>
-      <span className={lang === 'np' ? 'active' : ''}>नेपाली</span>
-    </button>
+      {/* Sliding pill — sits behind the buttons via z-index */}
+      <span
+        className="lang-sw__pill"
+        style={{ left: isEn ? 'calc(50% + 3px)' : '3px' }}
+        aria-hidden="true"
+      />
+
+      <button
+        type="button"
+        className={`lang-sw__btn${!isEn ? ' lang-sw__btn--on' : ''}`}
+        onClick={() => setLang('np')}
+      >
+        नेपाली
+      </button>
+      <button
+        type="button"
+        className={`lang-sw__btn${isEn ? ' lang-sw__btn--on' : ''}`}
+        onClick={() => setLang('en')}
+      >
+        EN
+      </button>
+    </div>
   );
 }

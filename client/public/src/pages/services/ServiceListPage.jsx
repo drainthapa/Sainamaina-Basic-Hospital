@@ -79,7 +79,7 @@ function ServiceCard({ service, emergency, field }) {
   const description = field(service, 'description');
 
   return (
-    <div className="col-md-4 col-sm-6 col-xs-12">
+    <div className="col-md-3 col-sm-6 col-xs-12">
       <Link to={`/services/${service.slug}`} className={`service-card ${emergency ? 'service-card-emergency' : ''}`}>
         <div className="service-card-icon">
           <i className={`fa ${icon}`} />

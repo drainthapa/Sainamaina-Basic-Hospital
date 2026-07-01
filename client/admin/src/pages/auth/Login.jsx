@@ -80,22 +80,17 @@ export default function Login() {
         <div className="login-brand-content">
           {/* Nepal Coat of Arms placeholder — circular white ring with cross */}
           <div className="login-emblem-img">
-            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="36" cy="36" r="34" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" />
-              <circle cx="36" cy="36" r="26" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.35)" strokeWidth="1" />
-              {/* Simplified mountains */}
-              <polygon points="22,48 36,24 50,48" fill="rgba(255,255,255,0.5)" />
-              <polygon points="14,48 26,30 38,48" fill="rgba(255,255,255,0.3)" />
-              {/* Sun */}
-              <circle cx="36" cy="20" r="5" fill="rgba(255,255,255,0.7)" />
-              {/* Snow cap */}
-              <polygon points="30,36 36,24 42,36" fill="rgba(255,255,255,0.9)" />
-            </svg>
+            <img
+              src="/nepal-logo.png"
+              alt="Nepal Government Emblem"
+              style={{ width: 72, height: 72, objectFit: 'contain', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))' }}
+            />
           </div>
 
           <div className="login-hospital-name">
             <h1>सैनामैना आधारभुत अस्पताल</h1>
-            <p>Content Management System</p>
+            <h2>Sainamaina Primary Hospital</h2>
+
           </div>
         </div>
 
@@ -106,7 +101,7 @@ export default function Login() {
       {/* ── Right form panel ── */}
       <div className="login-panel-right">
         <div className="login-lang-row">
-          <LanguageToggle />
+          <LanguageToggle variant="light" />
         </div>
 
         <div className="login-form-wrap">

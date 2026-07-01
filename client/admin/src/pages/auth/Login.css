@@ -79,6 +79,14 @@
   line-height: 1.2;
 }
 
+.login-hospital-name h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
 .login-hospital-name p {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.78);
@@ -120,7 +128,7 @@
 .login-lang-row {
   position: absolute;
   top: 22px;
-  right: 40px;
+  right: 36px;
   z-index: 2;
 }
 

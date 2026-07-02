@@ -29,7 +29,7 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <span className="sidebar-brand-np">सैनामैना अस्पताल</span>
+        <span className="sidebar-brand-np">सैनामैना आधारभुत अस्पताल</span>
         <span className="sidebar-brand-sub">{t('app.title')}</span>
       </div>
 

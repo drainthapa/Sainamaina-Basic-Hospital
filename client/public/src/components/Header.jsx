@@ -148,9 +148,10 @@ export default function Header() {
                 </div>
                 <div className="col-md-8 col-sm-8 col-xs-9 office-heading">
                   <div className="officeName">
-                    <h4 className="gov">{field(settings.site_name, 'municipality') || 'सैनामैना नगरपालिका'}</h4>
+                    <h4 className="gov">{t('header.munName')}</h4>
                     <h1 className="office-name">{field(settings.site_name, 'name') || 'सैनामैना आधारभुत अस्पताल'}</h1>
                     <h4 className="gov">{field(settings.contact, 'address') || 'सैनामैना-४,मुर्गिया,रुपन्देही'}</h4>
+
                   </div>
                 </div>
                 <div className="col-md-2 col-sm-2 hidden-xs">

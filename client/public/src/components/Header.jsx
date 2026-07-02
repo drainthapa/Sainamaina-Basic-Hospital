@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Home, Search } from 'lucide-react';
@@ -21,6 +21,21 @@ export default function Header() {
   const [isInverted, setIsInverted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  const navRef = useRef(null);
+  const sentinelRef = useRef(null);
+
+  // Stick the navbar when it scrolls past the top of the viewport
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsSticky(!entry.isIntersecting),
+      { threshold: 0, rootMargin: '0px' }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
 
   const applyFontSize = (index) => {
     const clamped = Math.max(0, Math.min(FONT_STEPS.length - 1, index));
@@ -148,7 +163,10 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="row nav-outer">
+        {/* Invisible sentinel — when this scrolls out of view, navbar becomes sticky */}
+        <div ref={sentinelRef} style={{ height: 1, marginBottom: -1 }} aria-hidden="true" />
+
+        <div ref={navRef} className={`row nav-outer${isSticky ? ' nav-sticky' : ''}`}>
           <div className="col-md-12">
             <div className="clearfix">
               <nav className="main-menu">
@@ -201,6 +219,9 @@ export default function Header() {
             </div>
           </div>
         </div>
+        {/* Spacer that fills the nav's height when it becomes position:fixed,
+            preventing the page content below from jumping upward */}
+        {isSticky && <div style={{ height: 52 }} aria-hidden="true" />}
       </div>
     </header>
   );

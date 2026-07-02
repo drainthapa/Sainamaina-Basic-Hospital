@@ -128,3 +128,83 @@
   }
 
 }
+
+/* ── Sticky navbar ────────────────────────────────────── */
+.nav-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #0956ce !important;
+  box-shadow: 0 3px 16px rgba(9, 86, 206, 0.38);
+  animation: nav-slide-down 0.26s ease forwards;
+}
+
+@keyframes nav-slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Top-level nav links → white when sticky ── */
+.nav-sticky .main-menu .navigation>li>a {
+  color: #fff !important;
+}
+
+/* ── Underline indicator → white when sticky ── */
+.nav-sticky .main-menu .navigation>li::before {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ── Hover / current highlight on sticky bar ── */
+.nav-sticky .main-menu .navigation>li:hover>a,
+.nav-sticky .main-menu .navigation>li.current>a {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px;
+}
+
+/* ── Dropdown arrow colour ── */
+.nav-sticky .main-menu .navigation>li.dropdown>a::after {
+  border-top-color: #fff !important;
+}
+
+/* ── Dropdown submenu — same white-bg as original ── */
+.nav-sticky .main-menu .navigation>li>ul {
+  background: #ffffff !important;
+  border-top: 2px solid #0956ce !important;
+  top: 100% !important;
+}
+
+/* ── Dropdown links — same dark text as original ── */
+.nav-sticky .main-menu .navigation>li>ul>li>a {
+  color: #292929 !important;
+}
+
+/* ── Dropdown hover — same blue as original ── */
+.nav-sticky .main-menu .navigation>li>ul>li:hover>a {
+  color: #ffffff !important;
+  background: #0447af !important;
+}
+
+/* ── Mobile nav toggle bars → white when sticky ── */
+.nav-sticky .navbar-toggle .icon-bar {
+  background: #fff !important;
+}
+
+/* Push page content down by nav height when sticky so content doesn't jump */
+.nav-sticky-spacer {
+  display: none;
+}
+
+.nav-has-sticky .nav-sticky-spacer {
+  display: block;
+  height: 52px;
+}
